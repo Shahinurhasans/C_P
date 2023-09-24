@@ -1,0 +1,40 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+void sieve(int n1, int n2) {
+    int prime[n2 + 1];
+    memset(prime, 0, sizeof(prime));
+
+    for (int i = 2; i * i <= n2; i++) {
+        if (prime[i] == 0) {
+            for (int j = i * i; j <= n2; j += i) {
+                prime[j] = 1;
+            }
+        }
+    }
+
+    cout << "Prime numbers between " << n1 << " and " << n2 << " are:" << endl;
+    for (int i = max(n1, 2); i <= n2; i++) {
+        if (prime[i] == 0) cout << i << " ";
+    }
+    cout << endl;
+}
+
+int main() {
+    int n1, n2;
+    cout << "Enter the lower and upper bounds of the interval: ";
+    cin >> n1 >> n2;
+
+    if (n1 <= 1) {
+        cout << "Prime numbers start from 2. Please enter a valid lower bound." << endl;
+        return 1;  
+    }
+
+    if (n1 > n2) {
+        cout << "Invalid interval. Lower bound should be less than or equal to the upper bound." << endl;
+        return 1;  
+    }
+
+    sieve(n1, n2); 
+    return 0;
+}
