@@ -1,0 +1,30 @@
+//896:https://leetcode.com/problems/monotonic-array/description/
+//T.C=N; S.C=1
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    
+    int nums[]={6,5,4,4};
+     int a=0, b=0, n =sizeof(nums)/sizeof(nums[0]);
+        for(int i=0; i<n-1; i++){
+            if(nums[i]<=nums[i+1]) 
+            {
+            a++;
+            }
+        }
+        for(int i=0; i<n-1; i++)
+        {
+            if(nums[i]>=nums[i+1]) 
+            {
+                b++;
+            }
+        }
+        if(a == n-1 || b == n-1)
+        {
+            cout<<"MONOTONE:;";
+        }
+        else 
+        cout<<"NOT MONOTONE";
+
+}
