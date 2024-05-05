@@ -1,0 +1,11 @@
+class Solution {
+public:
+    int kthGrammar(int n, int k) {
+        if (n == 1) return 0;  // Base case: When n is 1, return 0
+        if (k % 2 == 0)
+            return (kthGrammar(n - 1, k / 2) == 0) ? 1 : 0; // If k is even, recurse with n-1 and k/2, then flip the result (0 -> 1, 1 -> 0)
+        else{
+            return (kthGrammar(n - 1, (k + 1) / 2) == 0) ? 0 : 1; // If k is odd, recurse with n-1 and (k+1)/2, then keep the result unchanged
+			}
+    }
+};
